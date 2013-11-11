@@ -1,10 +1,8 @@
-package require Tk;
-#Import Class
-cd {C:\apps\tcl\include\gml_Object}
-source gml_Object.tcl
-source PAC.tcl
-source introspact.tcl
-cd {D:/Jeff/SkyDrive/Documents/Polytech/RICM5/S1/IHM/projet-ihm}
+#Import utilisé par la classe
+source SWL_FC.tcl
+source univers.tcl
+source control_pannel.tcl
+source joueur.tcl
 
 inherit Jeu_A Abstraction
 method Jeu_A constructor {control} {
@@ -32,7 +30,8 @@ method Jeu constructor { } {
 	# Declaration PAC fils
 	ControlPannel ${objName}_CP $objName;
 	Univers ${objName}_U $objName;
-	Joueurs ${objName}_J $objName;
+	#List de joueur
+	Joueur ${objName}_J $objName;
 }
 
 #Manque GETTER ET SETTER
