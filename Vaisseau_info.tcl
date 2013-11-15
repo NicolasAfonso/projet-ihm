@@ -23,3 +23,4 @@ method Vaisseau_Info constructor { } {
 
 #Manque GETTER ET SETTER
 
+Generate_PAC_accessors Control Vaisseau_Info_A Vaisseau_Info_P ${objName}

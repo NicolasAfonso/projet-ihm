@@ -20,3 +20,4 @@ method Joueur constructor { } {
 }
 
 #Manque GETTER ET SETTER
+Generate_PAC_accessors Control Joueur_A Joueur_P ${objName};

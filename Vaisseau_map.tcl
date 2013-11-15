@@ -21,3 +21,4 @@ method Vaisseau_Map constructor { } {
 }
 
 #Manque GETTER ET SETTER
+Generate_PAC_accessors Control Vaisseau_Map_A Vaisseau_Map_P ${objName}

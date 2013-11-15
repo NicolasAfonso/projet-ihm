@@ -22,4 +22,4 @@ method Vaisseau_MiniMap constructor { } {
 }
 
 #Manque GETTER ET SETTER
-
+Generate_PAC_accessors Control Vaisseau_MiniMap_A Vaisseau_MiniMap_P ${objName}
