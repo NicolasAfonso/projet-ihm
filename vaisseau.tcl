@@ -20,10 +20,14 @@ method Vaisseau constructor { } {
   
 	# Declaration PAC fils
 	# pour un Vaisseau, on a 1 Vaisseau map, 1 Vaisseau mini map, 1 Vaisseau info
-	VaisseauMap ${objName}_CP $objName;
-	VaisseauMiniMap ${objName}_U $objName;
-	VaisseauInfo ${objName}_J $objName;
-
+	VaisseauMap ${objName}_VM $objName;
+	Generate_PAC_accessors Control Vaisseau_Map_A Vaisseau_Map_P ${objName}_VM
+	
+	VaisseauMiniMap ${objName}_VM $objName;
+	Generate_PAC_accessors Control Vaisseau_MiniMap_A Vaisseau_MiniMap_P ${objName}_VMM
+	
+	VaisseauInfo ${objName}_VM $objName;
+	Generate_PAC_accessors Control Vaisseau_MiniMap_A Vaisseau_MiniMap_P ${objName}_VI
 }
 
 #Manque GETTER ET SETTER
