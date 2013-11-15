@@ -21,9 +21,7 @@ method Planete constructor { } {
 	# Declaration PAC fils
 	# pour un Planete, on a 1 Planete map, 1 Planete mini map, 1 Planete info
 	PlaneteMap ${objName}_PM $objName;
-	Generate_PAC_accessors Control PlaneteMap_A PlaneteMap_P ${objName}_PM;
 	PlaneteMiniMap ${objName}_PMM $objName;
-	Generate_PAC_accessors Control PlaneteMiniMap_A PlaneteMiniMap_P ${objName}_PMM ;
 	PlaneteInfo ${objName}_PI $objName;
-	Generate_PAC_accessors Control PlaneteInfo_A PlaneteInfo_P ${objName}_PI;
 }
+Generate_PAC_accessors Control Planete Planete ${objName};

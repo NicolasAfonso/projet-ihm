@@ -13,12 +13,4 @@ method MiniMap constructor { } {
   MiniMap_A ${objName}_A $objName
   this inherited "" ${objName}_A ${objName}_P ""
 }
-
-#Manque GETTER ET SETTER
-inherit myGen Generator
-method myGen GEN_set_VALUE { val} {
-	set this(VALUE) $val
-}
-
-myGen g
-g gen Minimap_P valeur
+Generate_PAC_accessors Control MiniMap_A MiniMap_P ${objName};

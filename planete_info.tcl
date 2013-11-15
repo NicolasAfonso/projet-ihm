@@ -20,6 +20,5 @@ method Planete_Info constructor { } {
 	# Declaration PAC fils
 
 }
-
-#Manque GETTER ET SETTER
+Generate_PAC_accessors Control Planete_Info_A Planete_Info_P ${objName};
 

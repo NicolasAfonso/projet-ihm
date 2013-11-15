@@ -28,10 +28,9 @@ method Univers constructor { } {
 	Generate_PAC_accessors Control Map_A Map_P ${objName}_MAP;
 	#List Vaisseaux
 	Vaisseau ${objName}_V $objName;
-	Generate_PAC_accessors Control Vaisseau_A Vaisseau_P ${objName}_V;
 	#List Planete
 	Planete ${objName}_P $objName;
-	Generate_PAC_accessors Control Planete_A Planete_P ${objName}_P;
+	
 }
-
+Generate_PAC_accessors Control Univers_A Univers_P ${objName};
 #Manque Liste de planètes
