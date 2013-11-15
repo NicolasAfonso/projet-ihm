@@ -9,3 +9,4 @@ cd {D:/Jeff/SkyDrive/Documents/Polytech/RICM5/S1/IHM/projet-ihm}
 
 #Initialisation du jeu
 Jeu J;
+Generate_PAC_accessors Control Jeu_A Jeu_P J;

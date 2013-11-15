@@ -29,9 +29,12 @@ method Jeu constructor { } {
   
 	# Declaration PAC fils
 	ControlPannel ${objName}_CP $objName;
+	Generate_PAC_accessors Control ControlPannel_A ControlPannel_P ${objName}_CP;
 	Univers ${objName}_U $objName;
+	Generate_PAC_accessors Control Univers_A Univers_P ${objName}_U;
 	#List de joueur
 	Joueur ${objName}_J $objName;
+	Generate_PAC_accessors Control Joueur_A Joueur_P ${objName}_J;
 }
 
-#Manque GETTER ET SETTER
+#Manque Liste de joueur

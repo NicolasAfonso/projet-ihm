@@ -22,12 +22,16 @@ method Univers constructor { } {
   
 	# Declaration PAC fils
 	Info ${objName}_I $objName;
-	 MiniMap ${objName}_MMAP $objName;
+	MiniMap ${objName}_MMAP $objName;
+	Generate_PAC_accessors Control MiniMap_A MiniMap_P ${objName}_MMAP;
 	Map ${objName}_MAP $objName;
+	Generate_PAC_accessors Control Map_A Map_P ${objName}_MAP;
 	#List Vaisseaux
 	Vaisseau ${objName}_V $objName;
+	Generate_PAC_accessors Control Vaisseau_A Vaisseau_P ${objName}_V;
 	#List Planete
-	Planete ${objName}_P $objName
+	Planete ${objName}_P $objName;
+	Generate_PAC_accessors Control Planete_A Planete_P ${objName}_P;
 }
 
-#Manque GETTER ET SETTER
+#Manque Liste de planètes
