@@ -1,21 +1,21 @@
 
 
 
-inherit Vaisseau_Info_A Abstraction
-method Vaisseau_Info_A constructor {control} {
+inherit VaisseauInfo_A Abstraction
+method VaisseauInfo_A constructor {control} {
   this inherited $control
 }
 
-inherit Vaisseau_Info_P Presentation
-method Vaisseau_Info_P constructor {control} {
+inherit VaisseauInfo_P Presentation
+method VaisseauInfo_P constructor {control} {
   
 }
 
-inherit Vaisseau_Info Control
-method Vaisseau_Info constructor { } {
-  Vaisseau_Info_P ${objName}_P $objName
-  Vaisseau_Info_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
+inherit VaisseauInfo Control
+method VaisseauInfo constructor {parent } {
+  VaisseauInfo_P ${objName}_P $objName
+  VaisseauInfo_A ${objName}_A $objName
+  this inherited $parent ${objName}_A ${objName}_P ""
   
 	# Declaration PAC fils
 
@@ -23,4 +23,3 @@ method Vaisseau_Info constructor { } {
 
 #Manque GETTER ET SETTER
 
-Generate_PAC_accessors Control Vaisseau_Info_A Vaisseau_Info_P ${objName}

@@ -8,10 +8,10 @@ method Info_P constructor {control} {
 }
 
 inherit Info Control
-method Info constructor { } {
+method Info constructor {parent infoFrame } {
   Info_P ${objName}_P $objName
   Info_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
+  this inherited $parent ${objName}_A ${objName}_P "" 
 }
 
 #Manque GETTER ET SETTER

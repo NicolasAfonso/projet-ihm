@@ -13,19 +13,16 @@ method Vaisseau_P constructor {control} {
 }
 
 inherit Vaisseau Control
-method Vaisseau constructor { } {
+method Vaisseau constructor {parent } {
   Vaisseau_P ${objName}_P $objName
   Vaisseau_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
-  
+ 
 	# Declaration PAC fils
 	# pour un Vaisseau, on a 1 Vaisseau map, 1 Vaisseau mini map, 1 Vaisseau info
 	VaisseauMap ${objName}_VM $objName;
-	
-	VaisseauMiniMap ${objName}_VM $objName;
-	
-	VaisseauInfo ${objName}_VM $objName;
-}
+	VaisseauMiniMap ${objName}_VMM $objName;
+	VaisseauInfo ${objName}_VI $objName;
 
-#Manque GETTER ET SETTER
-Generate_PAC_accessors Control Vaisseau_A Vaisseau_P ${objName}
+
+	this inherited $parent ${objName}_A ${objName}_P [list ${objName}_VM ${objName}_VMM ${objName}_VI]
+}

@@ -8,10 +8,11 @@ method ControlPannel_P constructor {control} {
 }
 
 inherit ControlPannel Control
-method ControlPannel constructor { } {
+method ControlPannel constructor {parent kernel} {
+  
   ControlPannel_P ${objName}_P $objName
   ControlPannel_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
+  this inherited $parent ${objName}_A ${objName}_P ""
 }
 
 #Manque GETTER ET SETTER

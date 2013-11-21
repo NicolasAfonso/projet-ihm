@@ -6,7 +6,7 @@ source vaisseau.tcl
 source planete.tcl
 
 inherit Univers_A Abstraction
-method Jeu_A constructor {control} {
+method Univers_A constructor {control} {
 }
 
 inherit Univers_P Presentation
@@ -15,22 +15,22 @@ method Univers_P constructor {control} {
 }
 
 inherit Univers Control
-method Univers constructor { } {
-  Jeu_P ${objName}_P $objName
-  Jeu_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
-  
+method Univers constructor {parent kernel mapFrame miniMapFrame infoFrame} {
+
+	Univers_P ${objName}_P $objName
+  	Univers_A ${objName}_A $objName
 	# Declaration PAC fils
-	Info ${objName}_I $objName;
-	MiniMap ${objName}_MMAP $objName;
-	Generate_PAC_accessors Control MiniMap_A MiniMap_P ${objName}_MMAP;
-	Map ${objName}_MAP $objName;
-	Generate_PAC_accessors Control Map_A Map_P ${objName}_MAP;
+	Info ${objName}_I $objName infoFrame
+	MiniMap ${objName}_MMAP $objName miniMapFrame
+	Map ${objName}_MAP $objName mapFrame
+
 	#List Vaisseaux
-	Vaisseau ${objName}_V $objName;
+	Vaisseau ${objName}_V1 $objName
 	#List Planete
-	Planete ${objName}_P $objName;
-	
+	Planete ${objName}_P1 $objName "" "" "" "" 
+	#FC mapcanevas minimapcanevas infoframe
+	#Planete ${objName}_P2 $objName "" "" "" ""
+	this inherited $parent ${objName}_A ${objName}_P [list ${objName}_I ${objName}_MMAP ${objName}_MAP ${objName}_P1 ${objName}_V1]
 }
-Generate_PAC_accessors Control Univers_A Univers_P ${objName};
+#Generate_PAC_accessors Control Univers_A Univers_P ${objName};
 #Manque Liste de planètes

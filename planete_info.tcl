@@ -1,24 +1,24 @@
 
 
 
-inherit Planete_Info_A Abstraction
-method Planete_Info_A constructor {control} {
+inherit PlaneteInfo_A Abstraction
+method PlaneteInfo_A constructor {control} {
   this inherited $control
 }
 
-inherit Planete_Info_P Presentation
-method Planete_Info_P constructor {control} {
+inherit PlaneteInfo_P Presentation
+method PlaneteInfo_P constructor {control} {
   
 }
 
-inherit Planete_Info Control
-method Planete_Info constructor { } {
-  Planete_Info_P ${objName}_P $objName
-  Planete_Info_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
+inherit PlaneteInfo Control
+method PlaneteInfo constructor {parent infoframe} {
+  PlaneteInfo_P ${objName}_P $objName
+  PlaneteInfo_A ${objName}_A $objName
+  this inherited $parent ${objName}_A ${objName}_P ""
   
 	# Declaration PAC fils
 
 }
-Generate_PAC_accessors Control Planete_Info_A Planete_Info_P ${objName};
+# Generate_PAC_accessors Control Planete_Info_A Planete_Info_P ${objName};
 

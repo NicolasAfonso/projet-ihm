@@ -8,9 +8,9 @@ method MiniMap_P constructor {control} {
 }
 
 inherit MiniMap Control
-method MiniMap constructor { } {
+method MiniMap constructor {parent MiniMapFrame } {
   MiniMap_P ${objName}_P $objName
   MiniMap_A ${objName}_A $objName
-  this inherited "" ${objName}_A ${objName}_P ""
+  this inherited $parent ${objName}_A ${objName}_P ""
 }
-Generate_PAC_accessors Control MiniMap_A MiniMap_P ${objName};
+#Generate_PAC_accessors Control MiniMap_A MiniMap_P m;
