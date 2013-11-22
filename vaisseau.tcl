@@ -7,14 +7,8 @@ method Vaisseau_A constructor {control} {
   this inherited $control
 }
 
-inherit Vaisseau_P Presentation
-method Vaisseau_P constructor {control} {
-  
-}
-
 inherit Vaisseau Control
 method Vaisseau constructor {parent } {
-  Vaisseau_P ${objName}_P $objName
   Vaisseau_A ${objName}_A $objName
  
 	# Declaration PAC fils
@@ -24,5 +18,5 @@ method Vaisseau constructor {parent } {
 	VaisseauInfo ${objName}_VI $objName;
 
 
-	this inherited $parent ${objName}_A ${objName}_P [list ${objName}_VM ${objName}_VMM ${objName}_VI]
+	this inherited $parent ${objName}_A "" [list ${objName}_VM ${objName}_VMM ${objName}_VI]
 }

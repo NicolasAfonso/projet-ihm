@@ -10,10 +10,12 @@ method Joueur_P constructor {control} {
 }
 
 inherit Joueur Control
-method Joueur constructor {parent } {
+method Joueur constructor {parent infoCanevas} {
   Joueur_P ${objName}_P $objName
   Joueur_A ${objName}_A $objName
-  this inherited $parent ${objName}_A ${objName}_P "" 
+
+  #Héritage
+  this inherited $parent ${objName}_A ${objName}_P ""
 
 }
 

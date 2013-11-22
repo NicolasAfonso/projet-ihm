@@ -8,14 +8,9 @@ method Planete_A constructor {control FC} {
   #set this(FC) $FC ;#cmd param 1 param2 
 }
 
-inherit Planete_P Presentation
-method Planete_P constructor {control} {
-  
-}
-
 inherit Planete Control
 method Planete constructor {parent FC mapcanevas minimapcanevas infoframe} {
-  Planete_P ${objName}_P $objName
+
   Planete_A ${objName}_A $objName $FC
   
   
@@ -23,8 +18,8 @@ method Planete constructor {parent FC mapcanevas minimapcanevas infoframe} {
 	# pour un Planete, on a 1 Planete map, 1 Planete mini map, 1 Planete info
 	PlaneteMap ${objName}_PM $objName $mapcanevas;
 	PlaneteMiniMap ${objName}_PMM $objName $minimapcanevas;
-	
 	PlaneteInfo ${objName}_PI $objName $infoframe
-	this inherited $parent ${objName}_A ${objName}_P [list ${objName}_PM ${objName}_PMM ${objName}_PI]
+	
+	this inherited $parent ${objName}_A "" [list ${objName}_PM ${objName}_PMM ${objName}_PI]
 }
 # Generate_PAC_accessors Planete Planete_A Planete_P radius

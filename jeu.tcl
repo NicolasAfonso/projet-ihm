@@ -5,14 +5,6 @@ source univers.tcl
 source control_panel.tcl
 source joueur.tcl
 
-inherit Jeu_A Abstraction
-method Jeu_A constructor {control} {
-  this inherited $control
-
-  set this(SWL) ""
-  #Declarer le noyau fct
-}
-
 inherit Jeu_P Presentation
 method Jeu_P constructor {control} {
   # this inherited $control
@@ -33,18 +25,22 @@ method Jeu_P constructor {control} {
 inherit Jeu Control
 method Jeu constructor { } {
   Jeu_P ${objName}_P $objName
-  Jeu_A ${objName}_A $objName
-  
-  #setter la liste des childrens avant de la passer ds le constructeur
   
   
 	# Declaration PAC fils
-	ControlPannel ${objName}_ControlPannel $objName "";
-	Univers ${objName}_Univers $objName "" "" "" ""; #mapFrame minimapFrame infoFrame
+  #ControlPannel parent noyeaufct ControlPannelCanevas
+	ControlPannel ${objName}_ControlPannel $objName "" ""
+
+  #Univers parent mapCanevas minimapCanevas infoCanevas
+	Univers ${objName}_Univers $objName "" "" "" ""
+
 	#Liste de joueur
-	Joueur ${objName}_JA $objName;
-  Joueur ${objName}_JB $objName;
-	this inherited "" ${objName}_A ${objName}_P [list ${objName}_ControlPannel ${objName}_Univers ${objName}_JA ${objName}_JB]
+  #Joueur parent infoCanevas
+	Joueur ${objName}_JA $objName ""
+  Joueur ${objName}_JB $objName ""
+
+  #Héritage
+	this inherited "" "" ${objName}_P [list ${objName}_ControlPannel ${objName}_Univers ${objName}_JA ${objName}_JB]
 }
 
 #Manque Liste de joueur
