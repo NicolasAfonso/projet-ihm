@@ -4,7 +4,7 @@ method PlaneteMiniMap_P constructor {control} {
 }
 
 inherit PlaneteMiniMap Control
-method PlaneteMiniMap constructor {parent minimapcanevas} {
+method PlaneteMiniMap constructor {parent miniMapCanvas} {
   PlaneteMiniMap_P ${objName}_P $objName
 
 

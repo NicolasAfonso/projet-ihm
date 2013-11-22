@@ -1,11 +1,11 @@
 inherit VaisseauInfo_P Presentation
-method VaisseauInfo_P constructor {control} {
+method VaisseauInfo_P constructor {control infoCanevas}  {
   
 }
 
 inherit VaisseauInfo Control
-method VaisseauInfo constructor {parent } {
-  VaisseauInfo_P ${objName}_P $objName
+method VaisseauInfo constructor {parent infoCanvas} {
+  VaisseauInfo_P ${objName}_P $objName $infoCanvas
 
   #Héritage
   this inherited $parent "" ${objName}_P ""

@@ -4,7 +4,7 @@ method ControlPannel_P constructor {control} {
 }
 
 inherit ControlPannel Control
-method ControlPannel constructor {parent kernel ControlPannelCanevas} {
+method ControlPannel constructor {parent kernel ControlPannelCanvas} {
   ControlPannel_P ${objName}_P $objName
 
   #Hériatage

@@ -10,21 +10,19 @@ method Univers_A constructor {control} {
 }
 
 inherit Univers Control
-method Univers constructor {parent kernel mapCanevas minimapCanevas infoCanevas} {
+method Univers constructor {parent kernel mapCanvas minimapCanvas infoCanvas} {
   	Univers_A ${objName}_A $objName
 
 	# Declaration PAC fils
-	Info ${objName}_I $objName infoCanevas
-	MiniMap ${objName}_MMAP $objName minimapCanevas
-	Map ${objName}_MAP $objName mapCanevas
+	Info ${objName}_I $objName $infoCanvas
+	MiniMap ${objName}_MMAP $objName $minimapCanvas
+	Map ${objName}_MAP $objName $mapCanvas
 
-	#Vaisseaux
-	Vaisseau ${objName}_V1 $objName
+	#Vaisseaux parent kernel mapCanvas minimapCanvas infoframe
+	Vaisseau ${objName}_V1 $objName "" "" "" ""
 
-	#Planetes
+	#Planetes parent kernel mapCanvas minimapCanvas infoframe
 	Planete ${objName}_P1 $objName "" "" "" "" 
-
-	#FC mapcanevas minimapcanevas infoframe
 
 	#Heritage
 	this inherited $parent ${objName}_A "" [list ${objName}_I ${objName}_MMAP ${objName}_MAP ${objName}_P1 ${objName}_V1 ] 

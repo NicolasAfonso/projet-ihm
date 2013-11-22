@@ -4,7 +4,7 @@ method PlaneteInfo_P constructor {control} {
 }
 
 inherit PlaneteInfo Control
-method PlaneteInfo constructor {parent infoframe} {
+method PlaneteInfo constructor {parent infoCanvas} {
   PlaneteInfo_P ${objName}_P $objName
 
 

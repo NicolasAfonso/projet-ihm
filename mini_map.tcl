@@ -1,11 +1,11 @@
 inherit MiniMap_P Presentation
-method MiniMap_P constructor {control} {
+method MiniMap_P constructor {control miniMapCanvas} {
   this inherited $control
 }
 
 inherit MiniMap Control
-method MiniMap constructor {parent MiniMapFrame } {
-  MiniMap_P ${objName}_P $objName
+method MiniMap constructor {parent miniMapCanvas} {
+  MiniMap_P ${objName}_P $objName $miniMapCanvas
 
   this inherited $parent "" ${objName}_P ""
 }

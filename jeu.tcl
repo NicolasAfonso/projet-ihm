@@ -7,40 +7,54 @@ source joueur.tcl
 
 inherit Jeu_P Presentation
 method Jeu_P constructor {control} {
-  # this inherited $control
-  # canvas .c
-  # pack .c -expand 1 -fill both
-  # frame .global -background "#808080" -relief groove
-  # frame .global.panel -background "#808080" -relief groove
-  # frame .global.minimap -background "#808080" -relief groove
-  # frame .global.map -background "#808080" -relief groove
+  #Créer fenêtre 
+  set this(win) ._$objName
+  toplevel $this(win)
 
-  # pack .global.minimap -side left
-  # pack .global.map -side top -ipadx 5 -ipadx 5
-  # pack .global.panel -side top -fill x -expand true
-  # pack .global -fill x -expand true -ipadx 5 -ipady 5 -side left
+  #Créer mapCanvas
+  set this(canMap) $this(win).canMap
+  canvas $this(canMap) -background black
 
+  #Créer mapCanvas
+  set this(canMiniMap) $this(win).canMiniMap
+  canvas $this(canMiniMap) -background red
+
+  #Créer mapCanvas
+  set this(frameInfos) $this(win).frameInfos
+  frame $this(frameInfos) -background green
+
+  # Placement
+  pack $this(canMap) -side right -expand 1 -fill both
+  pack $this(canMiniMap) -side top -expand 0 -fill both
+  pack $this(frameInfos) -expand 1 -fill both
 }
 
+inherit Jeu_A Presentation
+method Jeu_A constructor {control} {
+  set this(fc)  ${objName}_kernel
+  SWL_FC $this(fc)
+}
 inherit Jeu Control
 method Jeu constructor { } {
   Jeu_P ${objName}_P $objName
-  
+  Jeu_A ${objName}_A $objName
+   #Héritage
+  this inherited "" ${objName}_A ${objName}_P [list]
+ 
   
 	# Declaration PAC fils
-  #ControlPannel parent noyeaufct ControlPannelCanevas
-	ControlPannel ${objName}_ControlPannel $objName "" ""
 
-  #Univers parent mapCanevas minimapCanevas infoCanevas
+  #ControlPannel parent kernel ControlPannelCanvas
+	ControlPannel ${objName}_ControlPannel $objName [${objName}_A attribute fc] ""
+
+  #Univers parent kernel mapCanvas minimapCanvas infoCanvas
 	Univers ${objName}_Univers $objName "" "" "" ""
 
 	#Liste de joueur
-  #Joueur parent infoCanevas
-	Joueur ${objName}_JA $objName ""
-  Joueur ${objName}_JB $objName ""
+  #Joueur parent kernel infoCanvas
+	Joueur ${objName}_JA $objName "" ""
+  Joueur ${objName}_JB $objName "" ""
 
-  #Héritage
-	this inherited "" "" ${objName}_P [list ${objName}_ControlPannel ${objName}_Univers ${objName}_JA ${objName}_JB]
 }
 
 #Manque Liste de joueur
