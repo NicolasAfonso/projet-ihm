@@ -52,10 +52,10 @@ S Subscribe_after_Compute_a_simulation_step ALEX {
 
 set id_P1 [S Add_new_player "toto"]
 set id_P2 [S Add_new_player "Bob" ]
-set id_S1 [S Add_new_ship $id_P1 300 200 10]; S Update_ship $id_P1 $id_S1 [dict create fire_velocity 1 fire_angle 1]
-set id_S2 [S Add_new_ship $id_P1 200 300 10]; S Update_ship $id_P1 $id_S2 [dict create fire_velocity 10 fire_angle 1]
-set id_S3 [S Add_new_ship $id_P2 500 200 10]; S Update_ship $id_P2 $id_S3 [dict create fire_velocity 1 fire_angle 5]
-set id_S4 [S Add_new_ship $id_P2 500 300 10]; S Update_ship $id_P2 $id_S4 [dict create fire_velocity 10 fire_angle 5]
+set id_S1 [S Add_new_ship $id_P1 300 200 10]; S Update_ship $id_P1 $id_S1 [dict create fire_velocity 1 fire_angle 12000]
+set id_S2 [S Add_new_ship $id_P1 200 300 10]; S Update_ship $id_P1 $id_S2 [dict create fire_velocity 10 fire_angle 12000]
+set id_S3 [S Add_new_ship $id_P2 500 200 10]; S Update_ship $id_P2 $id_S3 [dict create fire_velocity 1 fire_angle 12000]
+set id_S4 [S Add_new_ship $id_P2 500 300 10]; S Update_ship $id_P2 $id_S4 [dict create fire_velocity 10 fire_angle 12000]
 
 set id_p1 [S Add_new_planet 400 400 30 10]
 set id_p2 [S Add_new_planet 400 300 20 5 ]
