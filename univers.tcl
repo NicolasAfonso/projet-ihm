@@ -62,7 +62,7 @@ method Univers addPlanete {name x y radius density} {
 }
 
 method Univers addShip {player name x y} {
-Vaisseau ${objName}_$name $objName $this(kernel) $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $player $x $y red
+Vaisseau ${objName}_$name $objName $this(kernel) $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $player $x $y 
 }
 
 method Univers fire {} {

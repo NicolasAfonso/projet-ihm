@@ -7,32 +7,31 @@ inherit Vaisseau_A Abstraction
 method Vaisseau_A constructor {control kernel playerId x y color} {
   this inherited $control
   set this(kernel) $kernel
-  set this(playerId) $playerId
+  set this(playerId) [$playerId get_id] 
   set this(color) $color
   set this(x) $x
   set this(y) $y
   set this(velocity) 10
   set this(angle) 0
-
-  this addShipToKernel $playerId $x $y
+  this addShipToKernel $this(playerId) $x $y
 
 }
 
 inherit Vaisseau Control
-method Vaisseau constructor {parent kernel mapCanvas miniMapCanvas infoCanvas playerId x y color} {
-    Vaisseau_A ${objName}_A $objName $kernel $playerId $x $y $color
+method Vaisseau constructor {parent kernel mapCanvas miniMapCanvas infoCanvas playerId x y } {
+    Vaisseau_A ${objName}_A $objName $kernel $playerId $x $y [$playerId get_color]
  
 	# Declaration PAC fils
 	# pour un Vaisseau, on a 1 Vaisseau map, 1 Vaisseau mini map, 1 Vaisseau info
 
 	#VaisseauMap parent mapCanvas
-	VaisseauMap ${objName}_VM $objName $mapCanvas $x $y $color $kernel $playerId [${objName}_A attribute id]
+	VaisseauMap ${objName}_VM $objName $mapCanvas $x $y [$playerId get_color] $kernel $playerId [${objName}_A attribute id]
 
 	#VaisseauMiniMap parent miniMapCanvas
-	VaisseauMiniMap ${objName}_VMM $objName $miniMapCanvas $x $y $color $kernel $playerId [${objName}_A attribute id]
+	VaisseauMiniMap ${objName}_VMM $objName $miniMapCanvas $x $y [$playerId get_color] $kernel $playerId [${objName}_A attribute id]
 
 	#VaisseauInfo parent infoCanvas
-	VaisseauInfo ${objName}_VI $objName $infoCanvas $x $y $color
+	VaisseauInfo ${objName}_VI $objName $infoCanvas $x $y [$playerId get_color]
 
 
 	this inherited $parent ${objName}_A "" [list ${objName}_VM ${objName}_VMM ${objName}_VI]

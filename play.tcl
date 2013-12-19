@@ -16,10 +16,10 @@ if {[lsearch  [gmlObject info objects Jeu] J ] == -1 } {
 
 	#Test
 	J addPlayer toto green
-	J addPlayer titi blue
+	J addPlayer titi purple
 	J addPlanete Jupitae 167 198 30 2
-	J addShip Player_1 ooo1 90 200
-	J addShip Player_2 ooo3 90 400
+	J addShip toto ooo1 90 200
+	J addShip titi ooo3 90 400
 
 
 
