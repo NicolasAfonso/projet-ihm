@@ -23,4 +23,3 @@ method MiniMap constructor {parent miniMapCanvas kernel} {
 
   this inherited $parent "" ${objName}_P ""
 }
-#Generate_PAC_accessors Control MiniMap_A MiniMap_P m;

@@ -3,7 +3,7 @@ method PlaneteMiniMap_P constructor {control kernel miniMapCanvas x y radius} {
 	this inherited $control
 	set this(miniMapCanvas) $miniMapCanvas
 	set this(kernel) $kernel
-	set this(id) [$this(miniMapCanvas) create oval [expr {($x-$radius)/2}] [expr {($y-$radius)/2}] [expr {($x+$radius)/2}] [expr {($y+$radius)/2}] -outline #000 -fill black]
+	set this(id) [$this(miniMapCanvas) create oval [expr {($x-$radius)/2}] [expr {($y-$radius)/2}] [expr {($x+$radius)/2}] [expr {($y+$radius)/2}] -outline #000 -fill green]
   	$this(kernel) Subscribe_after_Update_planet $objName "$this(control) updatePositionPlanete \$this(D_planets)"
 }
 
@@ -17,7 +17,6 @@ method PlaneteMiniMap_P updatePositionPlanete {D_planets id} {
 inherit PlaneteMiniMap Control
 method PlaneteMiniMap constructor {parent kernel miniMapCanvas x y radius} {
   PlaneteMiniMap_P ${objName}_P $objName $kernel $miniMapCanvas $x $y $radius
-  
 
   #Héritage
   this inherited $parent "" ${objName}_P ""

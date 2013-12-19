@@ -12,16 +12,16 @@ method PlaneteInfo_P constructor {control kernel infoCanvas id} {
  }
 
 method PlaneteInfo_P display_info {} {
-	puts "Here"
 	set name [$this(control) get_name]
 	set density [$this(control) get_density]
 	set x [$this(control) get_x]
 	set y [$this(control) get_y]
-	set this(typeLabel) [$this(infoCanvas).typeLabel configure -text "Planet information"]
-	set this(nameLabel) [$this(infoCanvas).nameLabel configure -text "Name Planet: $name"]
-	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordinate in space: $x - $y"]
-	set this(infoLabel) [$this(infoCanvas).infoLabel configure -text "Density: $density"]
+	set this(typeLabel) [$this(infoCanvas).typeLabel configure -text "Informations Planete"]
+	set this(nameLabel) [$this(infoCanvas).nameLabel configure -text "Nom de la planete: $name"]
+	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordonnées dans la galaxie: $x - $y"]
+	set this(infoLabel) [$this(infoCanvas).infoLabel configure -text "Densité: $density"]
 }
+
 inherit PlaneteInfo Control
 method PlaneteInfo constructor {parent kernel infoCanvas x y id} {
   PlaneteInfo_P ${objName}_P $objName $kernel $infoCanvas $id

@@ -66,16 +66,25 @@ method Info_P constructor {control infoCanvas} {
   set this(fire) [ttk::button $this(infoCanvas).fire -text "Feu !" -command "$this(control) fire"]
   pack $this(addCommandLabel) -anchor n -fill both
   pack $this(fire) -anchor n -fill both
-	# set this(diametreLabel) [label $this(infoCanvas).diametreLabel -justify left -text "Diametre:"]
-	# set this(densiteLabel) [label $this(infoCanvas).densiteLabel -justify left -text "Densite:"]
-	# pack $this(diametreLabel) -anchor n -fill both
-	# pack $this(diametre) -anchor n -fill both
 }
 
 
 method Info_P addShip {} {
 	$this(control) addShipOnKernel [$this(shipPlayer) get] [$this(shipName) get] [$this(coordSX) get]  [$this(coordSY) get]
 }
+
+method Info_P addPlayer {} {
+	$this(control) addPlayerOnKernel [$this(namePlayer) get] [$this(addColorPlayer) get]
+}
+
+
+inherit Info Control
+method Info constructor {parent infoCanvas} {
+  Info_P ${objName}_P $objName $infoCanvas
+  #Héritage
+  this inherited $parent "" ${objName}_P "" 
+}
+
 
 method Info addShip {} {
 	$this(presentation) addShip
@@ -85,10 +94,7 @@ method Info addShipOnKernel {player ship x y} {
 	$this(parent) addShip $player $ship $x $y
 }
 
-method Info_P addPlayer {} {
-	puts "[$this(addColorPlayer) get]"
-	$this(control) addPlayerOnKernel [$this(namePlayer) get] [$this(addColorPlayer) get]
-}
+
 
 method Info addPlayer {} {
 	$this(presentation) addPlayer
@@ -102,12 +108,3 @@ method Info fire {} {
 	$this(parent) fire
 }
 
-inherit Info Control
-method Info constructor {parent infoCanvas} {
-  Info_P ${objName}_P $objName $infoCanvas
-  	
-  #Héritage
-  this inherited $parent "" ${objName}_P "" 
-}
-
-#Manque GETTER ET SETTER

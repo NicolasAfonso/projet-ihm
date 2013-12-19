@@ -9,7 +9,7 @@ method VaisseauMap_P constructor {control mapCanvas x y color kernel playerId vI
    	set this(playerId) $playerId
    	set this(id) [$this(mapCanvas) create oval [expr {$x-10}] [expr {$y-10}] [expr {$x+10}] [expr {$y+10}] -fill $color -tags [list ]]
    	$this(mapCanvas) bind $this(id) <Button-1>  "${objName} start_drag %x %y"
-
+   	$this(mapCanvas) bind $this(id) <Button-3>  "${objName} start_move %x %y"
 }
 
 Generate_PAC_accessors VaisseauMap VaisseauMap_P "" id
@@ -18,6 +18,10 @@ method VaisseauMap_P start_drag {x y} {
 	set this(arrowId) [$this(mapCanvas) create line [$this(control) get_x] [$this(control) get_y] $x $y -arrow last]
 	bind $this(mapCanvas) <B1-Motion> "${objName} update_drag %x %y"
 	bind $this(mapCanvas) <ButtonRelease-1>  "${objName} releaseShip %x %y"
+}
+
+method VaisseauMap_P start_move {x y} {
+	bind $this(mapCanvas) <ButtonRelease-3>  "${objName} moveShip %x %y"
 }
 
 method VaisseauMap_P update_drag {x y} {
@@ -32,13 +36,20 @@ method VaisseauMap_P dispose {} {
 method VaisseauMap_P  releaseShip {x y} {
 	set dy [expr {$y-[$this(control) get_y]}]
 	set dx [expr {$x-[$this(control) get_x]}]
-	$this(control) set_x $x
-	$this(control) set_y $y
 	$this(control) set_angle [::tcl::mathfunc::atan2 $dy $dx]
 	$this(control) set_velocity [::tcl::mathfunc::max 1 [::tcl::mathfunc::min 20 [::tcl::mathfunc::sqrt [expr {($dy*$dy + $dx*$dx)/100.}]]]]
 	$this(mapCanvas) delete $this(arrowId)
-	$this(mapCanvas) coords $this(id) [expr {$x-10}] [expr {$y-10}] [expr {$x+10}] [expr {$y+10}]
 	$this(mapCanvas) bind $this(id) <B1-Motion>  ""
+
+}
+
+method VaisseauMap_P  moveShip {x y} {
+	set dy [expr {$y-[$this(control) get_y]}]
+	set dx [expr {$x-[$this(control) get_x]}]
+	$this(control) set_x $x
+	$this(control) set_y $y
+	$this(mapCanvas) coords $this(id) [expr {$x-10}] [expr {$y-10}] [expr {$x+10}] [expr {$y+10}]
+	$this(mapCanvas) bind $this(id) <B3-Motion>  ""
 
 }
 

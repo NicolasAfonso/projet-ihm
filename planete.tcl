@@ -13,7 +13,6 @@ method Planete_A constructor {control kernel name x y radius density} {
   set this(density) $density
   set this(name) $name
   this addPlaneteToKernel $x $y $radius $density
-  
 }
 
 
@@ -40,7 +39,6 @@ method Planete_A set_position {position} {
 }
 
 method Planete_A dispose {} {
-	# UnSubscribe to functionnal core ?
 	this inherited
 }
 
@@ -64,7 +62,6 @@ method Planete constructor {parent kernel name mapCanvas minimapCanvas infoCanva
   
   
 	# Declaration PAC fils
-	# pour un Planete, on a 1 Planete map, 1 Planete mini map, 1 Planete info
 	PlaneteMap ${objName}_PM $objName $mapCanvas $x $y $radius
 	PlaneteMiniMap ${objName}_PMM $objName $kernel $minimapCanvas $x $y $radius
 	PlaneteInfo ${objName}_PI $objName $kernel $infoCanvas $x $y [${objName}_A attribute id]

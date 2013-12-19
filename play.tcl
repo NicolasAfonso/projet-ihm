@@ -6,7 +6,6 @@ source PAC.tcl
 source introspact.tcl
 cd {D:/Jeff/SkyDrive/Documents/Polytech/RICM5/S1/IHM/projet-ihm}
 source jeu.tcl
-source assesor_generator.tcl
 #Initialisation du jeu
 if {[lsearch  [gmlObject info objects Jeu] J ] == -1 } {
 	#Instance de Jeu
@@ -14,13 +13,16 @@ if {[lsearch  [gmlObject info objects Jeu] J ] == -1 } {
 	#instance Introspact pour le Jeu 
 	Introspact intro J;
 
-	#Test
-	J addPlayer toto green
-	J addPlayer titi purple
-	J addPlanete Jupitae 167 198 30 2
-	J addPlanete Mars 50 253 30 2
-	J addShip toto ooo1 90 200
-	J addShip titi ooo3 90 400
+	#Declare new objets 
+	J addPlayer Republique white
+	J addPlayer Empire black
+	J addPlanete Naboo 519 687 30 2
+	J addPlanete Tatooine 954 695 30 2
+	J addPlanete Coruscant 691 385 30 2
+	J addPlanete Endor 499 94 30 2
+	J addShip Republique faucon_millenium 319 100
+	J addShip Republique croiseur 200 50
+	J addShip Empire etoile_noire 90 400
 
 
 

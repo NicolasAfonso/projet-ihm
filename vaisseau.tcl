@@ -24,14 +24,10 @@ method Vaisseau constructor {parent kernel mapCanvas miniMapCanvas infoCanvas pl
  
 	# Declaration PAC fils
 	# pour un Vaisseau, on a 1 Vaisseau map, 1 Vaisseau mini map, 1 Vaisseau info
-
-	#VaisseauMap parent mapCanvas
 	VaisseauMap ${objName}_VM $objName $mapCanvas $x $y [$playerId get_color] $kernel $playerId [${objName}_A attribute id]
 
-	#VaisseauMiniMap parent miniMapCanvas
 	VaisseauMiniMap ${objName}_VMM $objName $miniMapCanvas $x $y [$playerId get_color] $kernel $playerId [${objName}_A attribute id]
 
-	#VaisseauInfo parent infoCanvas
 	VaisseauInfo ${objName}_VI $objName $kernel $infoCanvas $mapCanvas $x $y [$playerId get_color] [${objName}_A attribute id]
 
 
@@ -40,15 +36,30 @@ method Vaisseau constructor {parent kernel mapCanvas miniMapCanvas infoCanvas pl
 	this set_id [this get_id]
 }
 
-#Generate_MV_PAC_accessors Vaisseau Vaisseau_A [list VaisseauMap VaisseauMiniMap VaisseauInfo] id
-
 Generate_PAC_accessors Vaisseau Vaisseau_A "" playerId
 Generate_PAC_accessors Vaisseau Vaisseau_A "" name
-Generate_PAC_accessors Vaisseau Vaisseau_A "" x
-Generate_PAC_accessors Vaisseau Vaisseau_A "" y
+# Generate_PAC_accessors Vaisseau Vaisseau_A "" x
+# Generate_PAC_accessors Vaisseau Vaisseau_A "" y
 Generate_PAC_accessors Vaisseau Vaisseau_A "" id
 
 
+method Vaisseau_A set_x {x} {
+	set this(x) $x
+	this updateShip
+}
+
+method Vaisseau_A get_x {} {
+	return $this(x)
+}
+
+method Vaisseau_A set_y {y} {
+	set this(y) $y
+	this updateShip
+}
+
+method Vaisseau_A get_y {} {
+	return $this(y)
+}
 
 method Vaisseau_A addShipToKernel {playerId x y} {
 	set this(id) [$this(kernel) Add_new_ship $playerId $x $y 10]
@@ -113,5 +124,13 @@ method Vaisseau set_x {x} {
 
 method Vaisseau set_y {y} {
 	$this(abstraction) set_y $y
+}
+
+method Vaisseau get_x {} {
+	$this(abstraction) get_x
+}
+
+method Vaisseau get_y {} {
+	$this(abstraction) get_y
 }
 
