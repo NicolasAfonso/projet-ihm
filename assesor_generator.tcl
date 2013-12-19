@@ -24,3 +24,12 @@ proc Generate_PAC_accessors {C A P var} {
   # Evaluation of the command
   eval $cmd
 }
+
+proc Generate_MV_PAC_accessors {C A lP var} {
+    # Generates accessors for the control facet $C
+  append cmd "method $C user_set_$var {v} {this set_$var \$v}\n"
+  append cmd "method $C system_set_$var {v} {this set_$var \$v}\n"
+  append cmd "method $C get_$var { } {if {\$this(abstraction) != \"\"} {return \[\$this(abstraction) get_$var\]} else {return \$this($var)}}\n"
+
+  #faire des vues multiple
+}

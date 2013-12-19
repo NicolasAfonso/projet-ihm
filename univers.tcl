@@ -9,16 +9,25 @@ inherit Univers_A Abstraction
 method Univers_A constructor {control kernel mapCanvas minimapCanvas infoCanvas} {
 	this inherited $control
 	set this(mapCanvas) $mapCanvas
-	$kernel Subscribe_after_Destroy_planet A {puts "Destroy planet $id"; $this(mapCanvas) delete $id}
-	$kernel Subscribe_after_Update_planet  A {
-	set x [dict get $this(D_planets) $id x]
-	set y [dict get $this(D_planets) $id y]
-	set radius [dict get $this(D_planets) $id radius]
-	# this(mapCanvas) coords $id [expr $x - $radius] [expr $y - $radius] [expr $x + $radius] [expr $y + $radius]
-	}	
+	# $kernel Subscribe_after_Destroy_planet A {puts "Destroy planet $id"; $this(mapCanvas) delete $id}
+	# $kernel Subscribe_after_Update_planet  A {
+	# set x [dict get $this(D_planets) $id x]
+	# set y [dict get $this(D_planets) $id y]
+	# set radius [dict get $this(D_planets) $id radius]
+	# # this(mapCanvas) coords $id [expr $x - $radius] [expr $y - $radius] [expr $x + $radius] [expr $y + $radius]
+	# }	
 
-	# $kernel Subscribe_after_Destroy_ship A {puts "Destroy ship $id"; $this(mapCanvas) delete $id}
-	$kernel Subscribe_after_Destroy_ship A {puts "Destroy ship $id"; $mapCanvas delete $id}
+	# # $kernel Subscribe_after_Destroy_ship A {puts "Destroy ship $id"; $this(mapCanvas) delete $id}
+	# $kernel Subscribe_after_Destroy_ship A "puts {Destroy ship \$id}; $this(mapCanvas) delete \$id"
+
+# 	$kernel Subscribe_after_Add_new_ship ALEX {$this(mapCanvas) delete $rep; $this(mapCanvas) create oval [expr $x - $radius] [expr $y - $radius] [expr $x + $radius] [expr $y + $radius] -fill red -tags [list ALEX $rep]}
+# $kernel Subscribe_after_Destroy_ship ALEX {puts "Destroy ship $id"; $this(mapCanvas) delete $id}
+# $kernel Subscribe_after_Update_ship  ALEX {
+# 	set x [dict get $this(D_players) $id_player D_ships $id x]
+# 	set y [dict get $this(D_players) $id_player D_ships $id y]
+# 	set radius [dict get $this(D_players) $id_player D_ships $id radius]
+# 	$this(mapCanvas) coords $id [expr $x - $radius] [expr $y - $radius] [expr $x + $radius] [expr $y + $radius]
+# }
 
 	
 }

@@ -46,7 +46,7 @@ proc Add_aspect {c m mark code {position begin}} {
  # Inject code into the body
  set bgn_mark "# <${mark}>"
  set end_mark "# </${mark}>"
- if {[regexp "^(.*)${bgn_mark}\n.*$end_mark\n(.*)\$" $body reco bgn end]} {
+ if {[regexp "^(.)*${bgn_mark}\n.*$end_mark\n(.*)\$" $body reco bgn end]} {
    set body "$bgn$bgn_mark\n$code\n$end_mark\n$end"
   } else {if {$position == "begin"} {
             set body "$bgn_mark\n$code\n$end_mark\n$body"
@@ -93,7 +93,7 @@ proc Generate_PAC_accessors {C A P var {propagate 1}} {
  append cmd "method $C user_set_$var   {v} {this set_$var \$v}\n"
  append cmd "method $C system_set_$var {v} {this set_$var \$v}\n"
  append cmd "method $C get_$var { } {if {\$this(abstraction) != \"\"} {return \[\$this(abstraction) get_$var\]} else {return \$this($var)}}\n"
- append cmd "method $C set_$var {v} {if {\$this(abstraction)  != \"\"} {\$this(abstraction) set_$var \$v}; if {\$this(presentation)  != \"\"} {\$this(presentation) set_$var \[this get_$var\]}}\n"
+ append cmd "method $C set_$var {v} {if {\$this(presentation)  != \"\"} {\$this(presentation) set_$var \$v}; if {\$this(abstraction)  != \"\"} {\$this(abstraction) set_$var \$v}}\n"
  if {$propagate} {append cmd "Add_propagation $C set_$var\n"}
  
 # A facet
