@@ -18,8 +18,8 @@ method PlaneteInfo_P display_info {} {
 	set y [$this(control) get_y]
 	set this(typeLabel) [$this(infoCanvas).typeLabel configure -text "Informations Planete"]
 	set this(nameLabel) [$this(infoCanvas).nameLabel configure -text "Nom de la planete: $name"]
-	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordonnées dans la galaxie: $x - $y"]
-	set this(infoLabel) [$this(infoCanvas).infoLabel configure -text "Densité: $density"]
+	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordonnees dans la galaxie: $x - $y"]
+	set this(infoLabel) [$this(infoCanvas).infoLabel configure -text "Densite: $density"]
 }
 
 inherit PlaneteInfo Control

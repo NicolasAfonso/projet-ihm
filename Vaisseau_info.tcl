@@ -19,7 +19,7 @@ method VaisseauInfo_P display_info {} {
 	set y [$this(control) get_y]
 	set this(typeLabel) [$this(infoCanvas).typeLabel configure -text "Informations vaisseau"]
 	set this(shipNameLabel) [$this(infoCanvas).nameLabel configure -text "Nom vaisseau: $name"]
-	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordonnées dans la galaxie: $x - $y"]
+	set this(positionLabel) [$this(infoCanvas).positionLabel configure -text "Coordonnees dans la galaxie: $x - $y"]
 	set this(infoLabel) [$this(infoCanvas).infoLabel configure -text "Vitesse: $velocity"]
 }
 
