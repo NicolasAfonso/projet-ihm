@@ -64,7 +64,7 @@ method Jeu addPlanete {name x y radius density} {
 }
 
 method Jeu addShip {playerName nameShip x y} {
-  ${objName}_Univers addShip ${objName}_J_$playerName $nameShip $x $y 
+  ${objName}_Univers addShip $playerName $nameShip $x $y 
 }
 
 method Jeu addPlayer {name color} {

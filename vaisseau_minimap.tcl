@@ -7,7 +7,11 @@ method VaisseauMiniMap_P constructor {control miniMapCanvas x y color kernel pla
    	set this(color) $color
    	set this(playerId) $playerId
 	set this(id) [$this(miniMapCanvas) create oval [expr {$x/2-5}] [expr {$y/2-5}] [expr {$x/2+5}] [expr {$y/2+5}] -outline #000 -fill $color]
-	$this(kernel) Subscribe_after_Update_ship $objName "$this(control) updatePositionShip \$this(D_players)"
+	$this(kernel) Subscribe_after_Update_ship $objName "
+	if {\$id == \"$this(id)\"} {
+  		puts \"Ship $this(id) updated\";
+		this(control) updatePositionShip \$this(D_players)
+		}"
 
 	}
 
@@ -38,7 +42,8 @@ method VaisseauMiniMap updatePositionShip {D_players} {
 
 method VaisseauMiniMap_P dispose {} {
 	$this(miniMapCanvas) delete $this(id)
-	# this inherited
+	# Desinscriptipn
+	this inherited
 }
 
 method VaisseauMiniMap get_id {} {

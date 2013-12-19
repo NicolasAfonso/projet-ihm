@@ -80,6 +80,7 @@ method Vaisseau_A updateShip {} {
 }
 
 method Vaisseau_A dispose {} {
+	#UnSubscribe to functionnal core
 	this inherited
 }
 

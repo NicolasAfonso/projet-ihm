@@ -6,7 +6,7 @@ method PlaneteInfo_P constructor {control kernel infoCanvas id} {
 	set this(infoCanvas) $infoCanvas
 	set this(id) $id
    	$this(kernel) Subscribe_after_Update_planet $objName  "if {\$id == \"$this(id)\"} {
-  		puts \"Ship $this(id) destroyed\";
+  		puts \"Ship $this(id) selected\";
   		$this(control) display_info
   		}"
  }
