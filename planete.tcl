@@ -7,9 +7,35 @@ inherit Planete_A Abstraction
 method Planete_A constructor {control kernel x y radius density} {
   this inherited $control
   set this(kernel) $kernel
+  set this(x) $x
+  set this(y) $y
+  set this(radius) $radius
+  set this(density) $density
   this addPlaneteToKernel $x $y $radius $density
   
 }
+
+method Planete_A set_x {x} {
+	set this(x) $x
+	$this(kernel) Update_planet $this(id) [dict create x $this(x) y $this(y)]
+}
+
+method Planete_A set_y {y} {
+	set this(y) $y
+	$this(kernel) Update_planet $this(id) [dict create x $this(x) y $this(y)]
+}
+
+
+method Planete_A set_position {position} {
+    lassign $position x y
+    $this(kernel) Update_planet $this(id) [dict create x $x y $y]
+}
+
+method Planete_A dispose {} {
+	# UnSubscribe to functionnal core ?
+	this inherited
+}
+
 
 inherit Planete Control
 method Planete constructor {parent kernel mapCanvas minimapCanvas infoCanvas x y radius density} {
@@ -31,16 +57,11 @@ method Planete constructor {parent kernel mapCanvas minimapCanvas infoCanvas x y
 method Planete_A addPlaneteToKernel {x y radius density} {
  	set this(id) [$this(kernel) Add_new_planet $x $y $radius $density]
 	$this(kernel) Subscribe_after_Destroy_planet $objName "after 10 {$this(control) dispose}"
-	$this(kernel) Subscribe_after_Update_planet  $objName "
-		 if {\$id == \"$this(id)\"} {
-			 $objName system_set_position \[list \[dict get \$this(D_planets) \$id x\] \[dict get \$this(D_planets) \$id y\]\]
-			}
-		"
-}
-
-method Planete_A dispose {} {
-	# UnSubscribe to functionnal core ?
-	this inherited
+	# $this(kernel) Subscribe_after_Update_planet  $objName "
+	# 	 if {\$id == \"$this(id)\"} {
+	# 		 {$objName} set_position \[list \[dict get \$this(D_planets) \$id x\] \[dict get \$this(D_planets) \$id y\]\]
+	# 		}
+		# "
 }
 
 method Planete set_position {position} {
@@ -48,4 +69,10 @@ method Planete set_position {position} {
     $this(fc) Update_planet $this(id) [dict create x $x y $y]
 }
 
-#Generate_PAC_accessors Planete Planete_A "" id
+method Planete set_x {x} {
+	$this(abstraction) set_x $x
+}
+
+method Planete set_y {y} {
+	$this(abstraction) set_y $y
+}

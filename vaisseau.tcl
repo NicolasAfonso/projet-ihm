@@ -14,12 +14,7 @@ method Vaisseau_A constructor {control kernel playerId x y color} {
   set this(velocity) 10
   set this(angle) 0
 
-  set this(id) [$this(kernel) Add_new_ship $playerId $x $y 10]
-  $this(kernel) Subscribe_after_Destroy_ship $objName "
-  if {\$id == \"$this(id)\"} {
-  	$this(control) dispose
-  }"
-  # this addShipToKernel $playerId $x $y
+  this addShipToKernel $playerId $x $y
 
 }
 
@@ -34,7 +29,7 @@ method Vaisseau constructor {parent kernel mapCanvas miniMapCanvas infoCanvas pl
 	VaisseauMap ${objName}_VM $objName $mapCanvas $x $y $color $kernel $playerId [${objName}_A attribute id]
 
 	#VaisseauMiniMap parent miniMapCanvas
-	VaisseauMiniMap ${objName}_VMM $objName $miniMapCanvas $x $y $color $kernel
+	VaisseauMiniMap ${objName}_VMM $objName $miniMapCanvas $x $y $color $kernel $playerId [${objName}_A attribute id]
 
 	#VaisseauInfo parent infoCanvas
 	VaisseauInfo ${objName}_VI $objName $infoCanvas $x $y $color
@@ -53,9 +48,14 @@ Generate_PAC_accessors Vaisseau Vaisseau_A "" y
 Generate_PAC_accessors Vaisseau Vaisseau_A "" id
 
 
+
 method Vaisseau_A addShipToKernel {playerId x y} {
-	# set this(id) [$this(kernel) Add_new_ship $playerId $x $y 10]
- #  	$this(kernel) Subscribe_after_Destroy_ship $objName "puts {Destroy ship id};$this(control) dispose"
+	set this(id) [$this(kernel) Add_new_ship $playerId $x $y 10]
+	  $this(kernel) Subscribe_after_Destroy_ship $objName "
+  		if {\$id == \"$this(id)\"} {
+  		$this(control) dispose
+  		}"
+
 }
 
 

@@ -9,7 +9,7 @@ method PlaneteMiniMap_P constructor {control miniMapCanvas x y radius} {
 inherit PlaneteMiniMap Control
 method PlaneteMiniMap constructor {parent miniMapCanvas x y radius} {
   PlaneteMiniMap_P ${objName}_P $objName $miniMapCanvas $x $y $radius
-
+  
 
   #Héritage
   this inherited $parent "" ${objName}_P ""
