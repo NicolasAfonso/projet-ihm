@@ -18,6 +18,7 @@ if {[lsearch  [gmlObject info objects Jeu] J ] == -1 } {
 	J addPlayer toto green
 	J addPlayer titi purple
 	J addPlanete Jupitae 167 198 30 2
+	J addPlanete Mars 50 253 30 2
 	J addShip toto ooo1 90 200
 	J addShip titi ooo3 90 400
 

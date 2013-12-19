@@ -22,7 +22,7 @@ method Jeu_P constructor {control} {
 
   #Créer mapCanvas
   set this(canInfos) $this(win).frameInfos
-  frame $this(canInfos) -background green
+  frame $this(canInfos) -background grey
 
   # Placement
   pack $this(canMap) -side right -expand 1 -fill both

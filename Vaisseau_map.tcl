@@ -1,3 +1,4 @@
+source utils.tcl
 inherit VaisseauMap_P Presentation
 method VaisseauMap_P constructor {control mapCanvas x y color kernel playerId vId} {
     this inherited $control
@@ -11,6 +12,7 @@ method VaisseauMap_P constructor {control mapCanvas x y color kernel playerId vI
 
 }
 
+Generate_PAC_accessors VaisseauMap VaisseauMap_P "" id
 
 method VaisseauMap_P start_drag {x y} {
 	set this(arrowId) [$this(mapCanvas) create line [$this(control) get_x] [$this(control) get_y] $x $y -arrow last]
@@ -37,6 +39,7 @@ method VaisseauMap_P  releaseShip {x y} {
 	$this(mapCanvas) delete $this(arrowId)
 	$this(mapCanvas) coords $this(id) [expr {$x-10}] [expr {$y-10}] [expr {$x+10}] [expr {$y+10}]
 	$this(mapCanvas) bind $this(id) <B1-Motion>  ""
+
 }
 
 
@@ -47,6 +50,10 @@ method VaisseauMap constructor {parent mapCanvas x y color kernel playerId v} {
   #Héritage
   this inherited $parent "" ${objName}_P ""
 
+}
+
+method VaisseauMap get_id {} {
+	return [$this(presentation) get_id]
 }
 
 method VaisseauMap get_x {} {

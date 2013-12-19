@@ -58,11 +58,11 @@ method Univers constructor {parent kernel mapCanvas minimapCanvas infoCanvas} {
 method Univers addPlanete {name x y radius density} {
 	#Planetes parent kernel mapCanvas minimapCanvas infoCanvas x y radius density
 	#Planete ${objName}_P1 $objName $kernel $mapCanvas $minimapCanvas $infoCanvas 50 50 40 40
-	Planete ${objName}_$name $objName $this(kernel) $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $x $y $radius $density
+	Planete ${objName}_$name $objName $this(kernel) $name $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $x $y $radius $density
 }
 
 method Univers addShip {player name x y} {
-Vaisseau ${objName}_$name $objName $this(kernel) $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $player $x $y 
+Vaisseau ${objName}_$name $objName $this(kernel) $this(mapCanvas) $this(minimapCanvas) $this(infoCanvas) $player $name $x $y 
 }
 
 method Univers fire {} {
